@@ -12,9 +12,13 @@ public class app {
 				case 1:
 					String telefoneCliente = JOptionPane.showInputDialog(
 							null, "Digite o telefone do cliente: ");
-					No noCliente = new No();
-					noCliente.setCliente(new Cliente(telefoneCliente));
-					lista.inserirNoFim(noCliente);
+					if (lista.buscarNoNumeroTelefone(telefoneCliente)) {
+						JOptionPane.showMessageDialog(null, "Esse número já existe.");
+					} else {
+						No noCliente = new No();
+						noCliente.setCliente(new Cliente(telefoneCliente));
+						lista.inserirNoFim(noCliente);
+					}
 					break;
 				case 2:
 					String telefoneClienteRemover = JOptionPane.showInputDialog(

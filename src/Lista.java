@@ -6,22 +6,18 @@ public class Lista {
     private int quantidade;
 
     public void inserirNoFim(No novoNo) {
-        if (this.buscarNoNumeroTelefone(novoNo.getCliente().getNumeroTelefone()) == null) {
-            if (this.inicio == null) {
-                this.inicio = novoNo;
-                this.fim = this.inicio;
-            } else {
-                this.fim.setProximo(novoNo);
-                this.fim = this.fim.getProximo();
-            }
-            this.quantidade++;
+        if (this.inicio == null) {
+            this.inicio = novoNo;
+            this.fim = this.inicio;
         } else {
-            JOptionPane.showMessageDialog(null, "Esse número já existe.");
+            this.fim.setProximo(novoNo);
+            this.fim = this.fim.getProximo();
         }
+        this.quantidade++;
     }
 
     public boolean removerNo(String numeroTelefone) {
-        if (buscarNoNumeroTelefone(numeroTelefone) != null) {
+        if (buscarNoNumeroTelefone(numeroTelefone)) {
             if (quantidade == 1) {
                 this.inicio = null;
                 this.fim = null;
@@ -73,16 +69,16 @@ public class Lista {
     }
 
 
-    public No buscarNoNumeroTelefone(String numeroTelefone) {
+    public boolean buscarNoNumeroTelefone(String numeroTelefone) {
         No proximoNo = this.inicio;
         while (proximoNo != null) {
             if (proximoNo.getCliente().getNumeroTelefone().equals(numeroTelefone)) {
-                return proximoNo;
+                return true;
             } else {
                 proximoNo = proximoNo.getProximo();
             }
         }
-        return null;
+        return false;
     }
 
     public int getQuantidade() {
