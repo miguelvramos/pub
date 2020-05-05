@@ -1,21 +1,13 @@
 public class Cliente {
 
-    private String nome;
     private String numeroTelefone;
 
-    public String getNome() {
-        return nome;
+    public Cliente(String numeroTelefone) {
+        this.numeroTelefone = numeroTelefone;
     }
 
     public String getNumeroTelefone() {
         return numeroTelefone;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public void setNumeroTelefone(String numeroTelefone) {
-        this.numeroTelefone = numeroTelefone;
-    }
 }
