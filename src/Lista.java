@@ -1,17 +1,23 @@
+import javax.swing.*;
+
 public class Lista {
     private No inicio;
     private No fim;
     private int quantidade;
 
     public void inserirNoFim(No novoNo) {
-        if (this.inicio == null) {
-            this.inicio = novoNo;
-            this.fim = this.inicio;
+        if (this.buscarNoNumeroTelefone(novoNo.getCliente().getNumeroTelefone()) == null) {
+            if (this.inicio == null) {
+                this.inicio = novoNo;
+                this.fim = this.inicio;
+            } else {
+                this.fim.setProximo(novoNo);
+                this.fim = this.fim.getProximo();
+            }
+            this.quantidade++;
         } else {
-            this.fim.setProximo(novoNo);
-            this.fim = this.fim.getProximo();
+            JOptionPane.showMessageDialog(null, "Esse número já existe.");
         }
-        this.quantidade++;
     }
 
     public boolean removerNo(String numeroTelefone) {
@@ -19,21 +25,22 @@ public class Lista {
             if (quantidade == 1) {
                 this.inicio = null;
                 this.fim = null;
-                this.quantidade--;
             } else if(this.inicio.getCliente().getNumeroTelefone().equals(numeroTelefone)) {
+                No noAux = this.inicio;
                 No noProximo = this.inicio.getProximo();
                 this.inicio = noProximo;
-                this.quantidade--;
+                noAux.setProximo(null);
             } else if (this.fim.getCliente().getNumeroTelefone().equals(numeroTelefone)) {
                 No noAnterior = buscarNoAnterior(numeroTelefone);
                 this.fim = noAnterior;
                 this.fim.setProximo(null);
-                this.quantidade--;
             } else {
                 No noAnterior = buscarNoAnterior(numeroTelefone);
+                No noAux = noAnterior.getProximo();
                 noAnterior.setProximo(noAnterior.getProximo().getProximo());
-                this.quantidade--;
+                noAux.setProximo(null);
             }
+            this.quantidade--;
             return true;
         } else {
             return false;

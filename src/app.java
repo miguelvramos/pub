@@ -12,29 +12,21 @@ public class app {
 				case 1:
 					String telefoneCliente = JOptionPane.showInputDialog(
 							null, "Digite o telefone do cliente: ");
-					if (lista.buscarNoNumeroTelefone(telefoneCliente) == null) {
-						No noCliente = new No();
-						noCliente.setCliente(new Cliente(telefoneCliente));
-						lista.inserirNoFim(noCliente);
-					} else {
-						JOptionPane.showMessageDialog(null, "Esse número já existe.");
-					}
+					No noCliente = new No();
+					noCliente.setCliente(new Cliente(telefoneCliente));
+					lista.inserirNoFim(noCliente);
 					break;
 				case 2:
-					if (lista.getQuantidade() != 0) {
-						String telefoneClienteRemover = JOptionPane.showInputDialog(
-								null, "Digite o telefone do cliente para dar baixa.");
-						if (lista.removerNo(telefoneClienteRemover)) {
-							JOptionPane.showMessageDialog(null, "Cliente removido.");
-						} else {
-							JOptionPane.showMessageDialog(null, "Número não encontrado.");
-						}
+					String telefoneClienteRemover = JOptionPane.showInputDialog(
+							null, "Digite o telefone do cliente para dar baixa.");
+					if (lista.removerNo(telefoneClienteRemover)) {
+						JOptionPane.showMessageDialog(null, "Cliente removido.");
 					} else {
-						JOptionPane.showMessageDialog(null, "A lista está vazia.");
+						JOptionPane.showMessageDialog(null, "Número não encontrado.");
 					}
 					break;
 				case 3:
-					if (lista.getQuantidade() != 0) {
+					if (lista.getQuantidade() > 0) {
 						Random sortear = new Random();
 						No noClienteSorteado = lista.buscarNoEspecifico(sortear.nextInt(lista.getQuantidade()));
 						Cliente clienteSorteado = noClienteSorteado.getCliente();
