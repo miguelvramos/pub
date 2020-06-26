@@ -81,6 +81,12 @@ public class Lista {
         return false;
     }
 
+    public void limparDados() {
+        this.inicio = null;
+        this.quantidade = 0;
+        this.fim = null;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }  
