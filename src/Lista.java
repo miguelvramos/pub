@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class Lista {
     private No inicio;
     private No fim;

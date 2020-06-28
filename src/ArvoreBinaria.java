@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class ArvoreBinaria {
     private NoArvoreBinaria raiz;
     private String lista = "";
@@ -30,11 +28,18 @@ public class ArvoreBinaria {
         return lista;
     }
 
+    public void setLista(String valor) {
+        this.lista = valor;
+    }
+
     public void central() {
         this.central(raiz);
     }
 
     private void central(NoArvoreBinaria noAtual) {
+        if (noAtual == raiz) {
+            this.setLista("");
+        }
         if (noAtual == null) {
             return;
         }
