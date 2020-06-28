@@ -1,6 +1,5 @@
 public class ArvoreBinaria {
     private NoArvoreBinaria raiz;
-    private String lista = "";
 
     public void incluir(NoArvoreBinaria novoNo) {
         this.incluir(raiz, novoNo);
@@ -24,28 +23,15 @@ public class ArvoreBinaria {
     }
 
     public String getLista() {
-        central();
-        return lista;
+        return this.getLista(raiz);
     }
 
-    public void setLista(String valor) {
-        this.lista = valor;
-    }
-
-    public void central() {
-        this.central(raiz);
-    }
-
-    private void central(NoArvoreBinaria noAtual) {
-        if (noAtual == raiz) {
-            this.setLista("");
-        }
+    private String getLista(NoArvoreBinaria noAtual) {
         if (noAtual == null) {
-            return;
+            return "";
         }
-        central(noAtual.getEsquerda());
-        lista += noAtual.getValor() + "\n";
-        central(noAtual.getDireita());
+
+        return (getLista(noAtual.getEsquerda()) + noAtual.getValor() + "\n" + getLista(noAtual.getDireita()));
     }
 
     public int localizar(long valor) { return this.localizar(raiz, valor); }
@@ -66,6 +52,5 @@ public class ArvoreBinaria {
 
     public void limparDados() {
         this.raiz = null;
-        this.lista = "";
     }
 }

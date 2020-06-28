@@ -9,7 +9,7 @@ public class app {
 		boolean flag = true;
 		while (flag == true) {
 			int escolha = Integer.parseInt(JOptionPane.showInputDialog(
-					"Opções: \n1 - Adicionar cliente \n2 - Fechar conta \n3 - Sortear cliente \n4- Listar celulares \n5 - Sair"));
+					"Opções: \n1 - Adicionar cliente \n2 - Fechar conta \n3 - Sortear cliente \n4 - Listar celulares \n5 - Limpar dados \n6 - Sair"));
 			switch (escolha) {
 				case 1:
 					long telefoneCliente = Long.parseLong(JOptionPane.showInputDialog(
@@ -49,12 +49,15 @@ public class app {
 					JOptionPane.showMessageDialog(null, arvoreBinaria.getLista());
 					break;
 				case 5:
-					flag = false;
-					break;
-				case 6:
 					arvoreBinaria.limparDados();
 					lista.limparDados();
 					JOptionPane.showMessageDialog(null, "Todos os dados foram deletados.");
+					break;
+				case 6:
+					JOptionPane.showMessageDialog(null, arvoreBinaria.getLista());
+					break;
+				case 7:
+					flag = false;
 					break;
 				default:
 					JOptionPane.showMessageDialog(null,"Opção Inválida!");
