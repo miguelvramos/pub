@@ -1,17 +1,17 @@
 public class NoArvoreBinaria {
-    private String valor;
+    private long valor;
     private NoArvoreBinaria esquerda;
     private NoArvoreBinaria direita;
 
-    public NoArvoreBinaria(String valor) {
+    public NoArvoreBinaria(long valor) {
         this.valor = valor;
     }
 
-    public String getValor() {
+    public long getValor() {
         return valor;
     }
 
-    public void setValor(String valor) {
+    public void setValor(long valor) {
         this.valor = valor;
     }
 

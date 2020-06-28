@@ -15,9 +15,9 @@ public class ArvoreBinaria {
             if(this.raiz == null) {
                 this.raiz = noAtual;
             }
-        } else if (Double.parseDouble(novoNo.getValor()) < Double.parseDouble(noAtual.getValor())) {
+        } else if (novoNo.getValor() < noAtual.getValor()) {
             noAtual.setEsquerda(incluir(noAtual.getEsquerda(), novoNo));
-        } else if (Double.parseDouble(novoNo.getValor()) > Double.parseDouble(noAtual.getValor())) {
+        } else if (novoNo.getValor() > noAtual.getValor()) {
             noAtual.setDireita(incluir(noAtual.getDireita(), novoNo));
         } else {
             System.out.println("O valor já foi cadastrado!");
@@ -43,15 +43,15 @@ public class ArvoreBinaria {
         central(noAtual.getDireita());
     }
 
-    public int localizar(String valor) { return this.localizar(raiz, valor); }
+    public int localizar(long valor) { return this.localizar(raiz, valor); }
 
-    private int localizar(NoArvoreBinaria noAtual, String valor) {
+    private int localizar(NoArvoreBinaria noAtual, long valor) {
         if (noAtual == null) {
             return 0;
         }
-        if (Double.parseDouble(valor) < Double.parseDouble(noAtual.getValor())) {
+        if (valor < noAtual.getValor()) {
             localizar(noAtual.getEsquerda(), valor);
-        } else if (Double.parseDouble(valor) > Double.parseDouble(noAtual.getValor())) {
+        } else if (valor > noAtual.getValor()) {
             localizar(noAtual.getDireita(), valor);
         } else {
             return 1;

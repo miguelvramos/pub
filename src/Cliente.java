@@ -1,12 +1,12 @@
 public class Cliente {
 
-    private String numeroTelefone;
+    private long numeroTelefone;
 
-    public Cliente(String numeroTelefone) {
+    public Cliente(long numeroTelefone) {
         this.numeroTelefone = numeroTelefone;
     }
 
-    public String getNumeroTelefone() {
+    public long getNumeroTelefone() {
         return numeroTelefone;
     }
 

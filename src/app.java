@@ -12,8 +12,8 @@ public class app {
 					"Opções: \n1 - Adicionar cliente \n2 - Fechar conta \n3 - Sortear cliente \n4- Sair \n5 - Listar celulares"));
 			switch (escolha) {
 				case 1:
-					String telefoneCliente = JOptionPane.showInputDialog(
-							null, "Digite o telefone do cliente: ");
+					long telefoneCliente = Long.parseLong(JOptionPane.showInputDialog(
+						null, "Digite o telefone do cliente: "));
 					if (lista.buscarNoNumeroTelefone(telefoneCliente) == true && arvoreBinaria.localizar(telefoneCliente) == 1) {
 						JOptionPane.showMessageDialog(null, "Esse número já existe.");
 					} else {
@@ -24,8 +24,8 @@ public class app {
 					}
 					break;
 				case 2:
-					String telefoneClienteRemover = JOptionPane.showInputDialog(
-							null, "Digite o telefone do cliente para dar baixa.");
+					long telefoneClienteRemover = Long.parseLong(JOptionPane.showInputDialog(
+						null, "Digite o telefone do cliente para dar baixa."));
 					if (lista.removerNo(telefoneClienteRemover)) {
 						JOptionPane.showMessageDialog(null, "Cliente removido.");
 					} else {
