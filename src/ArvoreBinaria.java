@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class ArvoreBinaria {
     private NoArvoreBinaria raiz;
 
@@ -23,7 +25,11 @@ public class ArvoreBinaria {
     }
 
     public String getLista() {
-        return this.getLista(raiz);
+        if (raiz == null) {
+            return "A árvore binária está vazia.";
+        } else {
+            return this.getLista(raiz);
+        }
     }
 
     private String getLista(NoArvoreBinaria noAtual) {
