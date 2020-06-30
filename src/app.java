@@ -4,25 +4,29 @@ import java.util.Random;
 public class app {
 	public static void main(String[] args) {
 		Lista lista = new Lista();
+		ArvoreBinaria arvoreBinaria = new ArvoreBinaria();
+
 		boolean flag = true;
 		while (flag == true) {
 			int escolha = Integer.parseInt(JOptionPane.showInputDialog(
-					"Opções: \n 1- Adicionar cliente \n 2- Fechar conta \n 3- Sortear cliente \n 4- Sair \n"));
+					"Opções: \n1 - Adicionar cliente \n2 - Fechar conta \n3 - Sortear cliente \n4 - Listar celulares " +
+							"\n5 - Limpar dados \n6 - Sair"));
 			switch (escolha) {
 				case 1:
-					String telefoneCliente = JOptionPane.showInputDialog(
-							null, "Digite o telefone do cliente: ");
-					if (lista.buscarNoNumeroTelefone(telefoneCliente)) {
+					long telefoneCliente = Long.parseLong(JOptionPane.showInputDialog(
+						null, "Digite o telefone do cliente: "));
+					if (lista.buscarNoNumeroTelefone(telefoneCliente) == true && arvoreBinaria.localizar(telefoneCliente) == 1) {
 						JOptionPane.showMessageDialog(null, "Esse número já existe.");
 					} else {
 						No noCliente = new No();
 						noCliente.setCliente(new Cliente(telefoneCliente));
 						lista.inserirNoFim(noCliente);
+						arvoreBinaria.incluir(new NoArvoreBinaria(telefoneCliente));
 					}
 					break;
 				case 2:
-					String telefoneClienteRemover = JOptionPane.showInputDialog(
-							null, "Digite o telefone do cliente para dar baixa.");
+					long telefoneClienteRemover = Long.parseLong(JOptionPane.showInputDialog(
+						null, "Digite o telefone do cliente para dar baixa."));
 					if (lista.removerNo(telefoneClienteRemover)) {
 						JOptionPane.showMessageDialog(null, "Cliente removido.");
 					} else {
@@ -43,6 +47,14 @@ public class app {
 					}
 					break;
 				case 4:
+					JOptionPane.showMessageDialog(null, arvoreBinaria.getLista());
+					break;
+				case 5:
+					arvoreBinaria.limparDados();
+					lista.limparDados();
+					JOptionPane.showMessageDialog(null, "Todos os dados foram deletados.");
+					break;
+				case 6:
 					flag = false;
 					break;
 				default:

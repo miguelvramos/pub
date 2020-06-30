@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class Lista {
     private No inicio;
     private No fim;
@@ -16,17 +14,17 @@ public class Lista {
         this.quantidade++;
     }
 
-    public boolean removerNo(String numeroTelefone) {
+    public boolean removerNo(long numeroTelefone) {
         if (buscarNoNumeroTelefone(numeroTelefone)) {
             if (quantidade == 1) {
                 this.inicio = null;
                 this.fim = null;
-            } else if(this.inicio.getCliente().getNumeroTelefone().equals(numeroTelefone)) {
+            } else if(this.inicio.getCliente().getNumeroTelefone() == numeroTelefone) {
                 No noAux = this.inicio;
                 No noProximo = this.inicio.getProximo();
                 this.inicio = noProximo;
                 noAux.setProximo(null);
-            } else if (this.fim.getCliente().getNumeroTelefone().equals(numeroTelefone)) {
+            } else if (this.fim.getCliente().getNumeroTelefone() == numeroTelefone) {
                 No noAnterior = buscarNoAnterior(numeroTelefone);
                 this.fim = noAnterior;
                 this.fim.setProximo(null);
@@ -56,10 +54,10 @@ public class Lista {
         }
     }
 
-    public No buscarNoAnterior(String numeroTelefone) {
+    public No buscarNoAnterior(long numeroTelefone) {
         No proximoNo = this.inicio;
         while (proximoNo != null) {
-            if (proximoNo.getProximo().getCliente().getNumeroTelefone().equals(numeroTelefone)) {
+            if (proximoNo.getProximo().getCliente().getNumeroTelefone() == numeroTelefone) {
                 return proximoNo;
             } else {
                 proximoNo = proximoNo.getProximo();
@@ -69,16 +67,22 @@ public class Lista {
     }
 
 
-    public boolean buscarNoNumeroTelefone(String numeroTelefone) {
+    public boolean buscarNoNumeroTelefone(long numeroTelefone) {
         No proximoNo = this.inicio;
         while (proximoNo != null) {
-            if (proximoNo.getCliente().getNumeroTelefone().equals(numeroTelefone)) {
+            if (proximoNo.getCliente().getNumeroTelefone() == numeroTelefone) {
                 return true;
             } else {
                 proximoNo = proximoNo.getProximo();
             }
         }
         return false;
+    }
+
+    public void limparDados() {
+        this.inicio = null;
+        this.quantidade = 0;
+        this.fim = null;
     }
 
     public int getQuantidade() {
